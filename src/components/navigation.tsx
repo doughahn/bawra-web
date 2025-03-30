@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, ChevronDown } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import { useState } from "react";
 
 const navItems = [
   { 
@@ -37,6 +38,7 @@ const navItems = [
 export function Navigation() {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
+  const [open, setOpen] = useState(false);
   
   return (
     <header 
@@ -111,12 +113,12 @@ export function Navigation() {
           </Button>
           
           {/* Mobile menu */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button 
                 variant="outline" 
                 size="icon" 
-                className="md:hidden border-white/30 text-white"
+                className="md:hidden border-white/30 text-white bg-white/10 hover:bg-white/20"
               >
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
@@ -127,6 +129,39 @@ export function Navigation() {
                 {navItems.map((item) => 
                   'subnav' in item && item.subnav ? (
                     <div key={item.href} className="flex flex-col gap-2">
+                      <SheetClose asChild>
+                        <Link
+                          href={item.href}
+                          className={`text-lg font-bold transition-colors ${
+                            pathname === item.href 
+                              ? "text-primary"
+                              : "hover:text-primary"
+                          }`}
+                          onClick={() => setOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      </SheetClose>
+                      <div className="pl-4 flex flex-col gap-2 border-l-2 border-slate-200 dark:border-slate-700">
+                        {item.subnav.map((subItem) => (
+                          <SheetClose key={subItem.href} asChild>
+                            <Link
+                              href={subItem.href}
+                              className={`text-base transition-colors ${
+                                pathname === subItem.href 
+                                  ? "text-primary"
+                                  : "hover:text-primary text-slate-600 dark:text-slate-400"
+                              }`}
+                              onClick={() => setOpen(false)}
+                            >
+                              {subItem.label}
+                            </Link>
+                          </SheetClose>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <SheetClose key={item.href} asChild>
                       <Link
                         href={item.href}
                         className={`text-lg font-bold transition-colors ${
@@ -134,45 +169,22 @@ export function Navigation() {
                             ? "text-primary"
                             : "hover:text-primary"
                         }`}
+                        onClick={() => setOpen(false)}
                       >
                         {item.label}
                       </Link>
-                      <div className="pl-4 flex flex-col gap-2 border-l-2 border-slate-200 dark:border-slate-700">
-                        {item.subnav.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className={`text-base transition-colors ${
-                              pathname === subItem.href 
-                                ? "text-primary"
-                                : "hover:text-primary text-slate-600 dark:text-slate-400"
-                            }`}
-                          >
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`text-lg font-bold transition-colors ${
-                        pathname === item.href 
-                          ? "text-primary"
-                          : "hover:text-primary"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
+                    </SheetClose>
                   )
                 )}
-                <Link 
-                  href="https://waiver.smartwaiver.com/w/60184b57585d5/web/"
-                  className="text-lg font-bold transition-colors hover:text-primary"
-                >
-                  Waiver
-                </Link>
+                <SheetClose asChild>
+                  <Link 
+                    href="https://waiver.smartwaiver.com/w/60184b57585d5/web/"
+                    className="text-lg font-bold transition-colors hover:text-primary"
+                    onClick={() => setOpen(false)}
+                  >
+                    Waiver
+                  </Link>
+                </SheetClose>
               </nav>
             </SheetContent>
           </Sheet>

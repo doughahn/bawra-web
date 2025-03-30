@@ -3,14 +3,20 @@
   publish = ".next"
 
 [build.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+  NETLIFY_NEXT_PLUGIN_SKIP = "false" 
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = false
-  conditions = {Role = ["admin"]}
+# Uncomment these redirects only if you still have issues after installing the plugin
+# [[redirects]]
+#   from = "/*"
+#   to = "/_next/static/:splat"
+#   status = 200
+#   force = true
+#   conditions = {Path = ["/_next/static/*"]}
+
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200

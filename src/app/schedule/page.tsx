@@ -277,9 +277,8 @@ export default function SchedulePage() {
                 };
               });
               
-              // Use a future date for demo purposes (since 2025 is in the future)
-              // In production, change this to: const today = new Date();
-              const today = new Date(2025, 1, 1); // Feb 1, 2025
+              // Use the current date to find the next event
+              const today = new Date();
               
               // Find the next event (closest to today)
               const futureEvents = allEvents.filter(event => event.sortDate >= today);

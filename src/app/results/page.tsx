@@ -93,8 +93,8 @@ export default function ResultsPage() {
       <section className="mb-24">
         <div className="mb-16 text-center pt-6 md:pt-8">
           <h1 className="text-5xl md:text-7xl heading-font mb-5">
-            <span className="text-slate-800 dark:text-slate-200">Race</span> 
-            <span className="text-primary ml-2">Results</span>
+            <span className="text-slate-800 dark:text-slate-200">BAWRA</span> 
+            <span className="text-primary ml-2">Race Results</span>
           </h1>
           <div className="w-32 h-1 bg-primary mx-auto"></div>
         </div>

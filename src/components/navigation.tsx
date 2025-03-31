@@ -30,7 +30,7 @@ const navItems = [
       { label: "Marinas", href: "/marinas" }
     ]
   },
-  { label: "Results", href: "/results" },
+  { label: "Race Results", href: "/results" },
   { 
     label: "Resources", 
     href: "/resources",

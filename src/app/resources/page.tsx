@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
 // Define resource types
@@ -119,8 +120,19 @@ const resources: Resource[] = [
 ];
 
 export default function ResourcesPage() {
+  // Get tab from URL query parameter
+  const searchParams = useSearchParams();
+  
   // State to track active tab
   const [activeTab, setActiveTab] = useState<'officials' | 'coxswains'>('officials');
+  
+  // Update active tab when URL parameter changes
+  useEffect(() => {
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'officials' || tabParam === 'coxswains') {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
 
   // Filter resources by type
   const officialsResources = resources.filter(resource => resource.type === 'officials');
@@ -143,8 +155,8 @@ export default function ResourcesPage() {
       {/* Tab Navigation */}
       <div className="flex justify-center mb-10">
         <div className="inline-flex rounded-md shadow-sm">
-          <button
-            type="button"
+          <Link
+            href="/resources?tab=officials"
             className={`py-3 px-6 md:px-10 text-sm md:text-base font-medium rounded-l-lg ${
               activeTab === 'officials'
                 ? 'bg-primary text-white'
@@ -153,9 +165,9 @@ export default function ResourcesPage() {
             onClick={() => setActiveTab('officials')}
           >
             Race Officials
-          </button>
-          <button
-            type="button"
+          </Link>
+          <Link
+            href="/resources?tab=coxswains"
             className={`py-3 px-6 md:px-10 text-sm md:text-base font-medium rounded-r-lg ${
               activeTab === 'coxswains'
                 ? 'bg-primary text-white'
@@ -164,7 +176,7 @@ export default function ResourcesPage() {
             onClick={() => setActiveTab('coxswains')}
           >
             Coxswains
-          </button>
+          </Link>
         </div>
       </div>
 

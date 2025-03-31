@@ -31,7 +31,15 @@ const navItems = [
     ]
   },
   { label: "Results", href: "/results" },
-  { label: "Resources", href: "/resources" },
+  { 
+    label: "Resources", 
+    href: "/resources",
+    subnav: [
+      { label: "All Resources", href: "/resources" },
+      { label: "Race Officials", href: "/resources?tab=officials" },
+      { label: "Coxswains", href: "/resources?tab=coxswains" }
+    ]
+  },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -52,7 +60,7 @@ export function Navigation() {
         <div className="flex items-center gap-6 md:gap-10">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="hidden logo-font sm:inline-block text-white text-xl">
+            <span className="logo-font text-white text-xl">
               BAWRA
             </span>
           </Link>

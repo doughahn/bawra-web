@@ -44,7 +44,7 @@ export function Footer() {
             <h3 className="text-sm font-medium mb-4">Resources</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/results" className="text-muted-foreground hover:text-bawra-primary transition-colors">
+                <Link href="/race-results" className="text-muted-foreground hover:text-bawra-primary transition-colors">
                   Race Results
                 </Link>
               </li>

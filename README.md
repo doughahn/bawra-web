@@ -17,6 +17,10 @@ This is the modern responsive redesign of the Bay Area Whaleboat Rowing Associat
 - Node.js 16 or later
 - npm
 
+### Required Assets
+
+- **Home Video Placeholder**: Place a file named `home-vid-cover.jpg` in the `/public/images/` directory. This image serves as a placeholder while the homepage video loads.
+
 ### Getting Started
 
 1. Clone the repository

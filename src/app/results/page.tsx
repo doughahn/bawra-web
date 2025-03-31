@@ -135,7 +135,7 @@ export default function ResultsPage() {
       <section className="max-w-6xl mx-auto mb-24">
         {/* Results Section */}
         <h2 className="text-3xl font-bold mb-8 heading-font text-slate-800 dark:text-slate-200">
-          Results by Year
+          Results by Year 
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {/* Column 1: Recent + 2010s */}

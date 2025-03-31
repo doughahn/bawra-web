@@ -90,38 +90,72 @@ export default function ResultsPage() {
   return (
     <div className="container mx-auto px-4 py-12 md:py-16 max-w-7xl">
       {/* Page Header */}
-      <div className="mb-12 text-center pt-6 md:pt-8">
-        <h1 className="text-5xl md:text-7xl heading-font mb-5">
-          <span className="text-slate-800 dark:text-slate-200">Race</span> 
-          <span className="text-primary ml-2">Results</span>
-        </h1>
-        <div className="w-32 h-1 bg-primary mx-auto mb-8"></div>
-        <p className="text-lg max-w-3xl mx-auto text-slate-700 dark:text-slate-300">
-          Historical race results from BAWRA events dating back to 1990.
-        </p>
-      </div>
+      <section className="mb-24">
+        <div className="mb-16 text-center pt-6 md:pt-8">
+          <h1 className="text-5xl md:text-7xl heading-font mb-5">
+            <span className="text-slate-800 dark:text-slate-200">Race</span> 
+            <span className="text-primary ml-2">Results</span>
+          </h1>
+          <div className="w-32 h-1 bg-primary mx-auto"></div>
+        </div>
 
-      <div className="max-w-6xl mx-auto">
+        {/* Introduction Card */}
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md border border-primary/20 mb-16 overflow-hidden">
+          <div className="p-8">
+            <h2 className="text-2xl font-bold mb-4 heading-font text-slate-800 dark:text-slate-200">
+              Historical Race Results
+            </h2>
+            <p className="text-lg text-slate-700 dark:text-slate-300 mb-6">
+              Browse race results from BAWRA events dating back to 1990. Results are available in various formats including PDF, Excel, and image files.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <div className="inline-flex items-center px-3 py-1 bg-primary/10 rounded-full text-primary text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                PDF Documents
+              </div>
+              <div className="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/20 rounded-full text-green-700 dark:text-green-300 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Excel Spreadsheets
+              </div>
+              <div className="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900/20 rounded-full text-blue-700 dark:text-blue-300 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Image Files
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-6xl mx-auto mb-24">
         {/* Results Section */}
+        <h2 className="text-3xl font-bold mb-8 heading-font text-slate-800 dark:text-slate-200">
+          Results by Year
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {/* Column 1: Recent + 2010s */}
           <div className="space-y-12">
-            <div>
-              <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+              <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
                 Recent Results
-              </h2>
-              <ul className="space-y-3">
+              </h3>
+              <ul className="space-y-3 mt-4">
                 {recentResults.map((result) => (
                   <ResultLink key={result.year} result={result} />
                 ))}
               </ul>
             </div>
             
-            <div>
-              <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+              <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
                 2010-2019
-              </h2>
-              <ul className="space-y-3">
+              </h3>
+              <ul className="space-y-3 mt-4">
                 {results2010s.map((result) => (
                   <ResultLink key={result.year} result={result} />
                 ))}
@@ -130,11 +164,11 @@ export default function ResultsPage() {
           </div>
           
           {/* Column 2: 2000s */}
-          <div>
-            <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+            <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
               2000-2009
-            </h2>
-            <ul className="space-y-3">
+            </h3>
+            <ul className="space-y-3 mt-4">
               {results2000s.map((result) => (
                 <ResultLink key={result.year} result={result} />
               ))}
@@ -143,22 +177,22 @@ export default function ResultsPage() {
           
           {/* Column 3: 1990s + 1980s */}
           <div className="space-y-12">
-            <div>
-              <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+              <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
                 1990-1999
-              </h2>
-              <ul className="space-y-3">
+              </h3>
+              <ul className="space-y-3 mt-4">
                 {results1990s.map((result) => (
                   <ResultLink key={result.year} result={result} />
                 ))}
               </ul>
             </div>
             
-            <div>
-              <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-slate-200 dark:border-slate-700 p-6">
+              <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-200 pb-2 border-b border-slate-200 dark:border-slate-700">
                 1980-1989
-              </h2>
-              <ul className="space-y-3">
+              </h3>
+              <ul className="space-y-3 mt-4">
                 {results1980s.map((result) => (
                   <ResultLink key={result.year} result={result} />
                 ))}
@@ -166,34 +200,44 @@ export default function ResultsPage() {
             </div>
           </div>
         </div>
+      </section>
         
-        {/* Scoring Information */}
-        <div className="bg-slate-50 dark:bg-slate-800/50 rounded-lg p-8 shadow-md mb-12">
-          <h2 className="text-2xl font-bold mb-4 text-slate-800 dark:text-slate-200">
-            BAWRA Season Championships
+      {/* Scoring Information */}
+      <section className="max-w-6xl mx-auto mb-24">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-md border border-primary/20 p-8 overflow-hidden">
+          <h2 className="text-3xl font-bold mb-6 heading-font text-slate-800 dark:text-slate-200">
+            Championship Scoring System
           </h2>
           
           <div className="prose prose-slate dark:prose-invert max-w-none">
-            <p>
+            <p className="text-lg">
               BAWRA declares Men, Women and Mixed team Champions for both Spring and Fall seasons. 
               Additionally, in the Fall, an overall Club Champion is declared.
             </p>
             <p>
               In 2003 BAWRA switched from a "high point" to a "low point" scoring system to determine Spring and Fall Championships:
             </p>
-            <blockquote className="border-l-4 border-primary pl-4 italic">
-              <p>1. Points assigned equals the place finished for teams that start and finish their event.</p>
-              <p>
-                2. Teams are given points for last place plus 1 point that:<br />
-                —Are Disqualified (DQ)<br />
-                —Did Not Finish (DNF) (started, but did not finish the race)<br />
-                —Did Not Start (DNS)
-              </p>
-            </blockquote>
+            <div className="bg-slate-50 dark:bg-slate-700/50 p-6 rounded-lg my-6">
+              <ol className="list-decimal pl-6 space-y-4">
+                <li className="text-slate-700 dark:text-slate-300">
+                  Points assigned equals the place finished for teams that start and finish their event.
+                </li>
+                <li className="text-slate-700 dark:text-slate-300">
+                  Teams are given points for last place plus 1 point that:
+                  <ul className="list-disc pl-6 mt-2 space-y-1">
+                    <li>Are Disqualified (DQ)</li>
+                    <li>Did Not Finish (DNF) (started, but did not finish the race)</li>
+                    <li>Did Not Start (DNS)</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+            <p className="text-slate-600 dark:text-slate-400 text-sm italic">
+              The team with the lowest total points at the end of the season is declared the champion in their division.
+            </p>
           </div>
         </div>
-        
-      </div>
+      </section>
     </div>
   );
 }
@@ -203,23 +247,56 @@ function ResultLink({ result }: { result: ResultYear }) {
   // For items without a real link, show them differently
   if (result.isExternal === true && result.link === '#') {
     return (
-      <li className="text-slate-500 dark:text-slate-400">
+      <li className="py-2 px-3 rounded-md text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700/30">
         {result.label}
+        <span className="ml-2 text-xs italic">(No results available)</span>
       </li>
     );
   }
 
+  // Determine file type for icon
+  const getFileIcon = (link: string) => {
+    if (link === '#') return null;
+    
+    if (link.endsWith('.pdf')) {
+      return (
+        <span className="bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 text-xs px-2 py-0.5 rounded-full ml-2">
+          PDF
+        </span>
+      );
+    } else if (link.endsWith('.xlsx') || link.endsWith('.xls') || link.endsWith('.doc') || link.endsWith('.docx')) {
+      return (
+        <span className="bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 text-xs px-2 py-0.5 rounded-full ml-2">
+          DOC
+        </span>
+      );
+    } else if (link.endsWith('.jpg') || link.endsWith('.png') || link.endsWith('.gif')) {
+      return (
+        <span className="bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs px-2 py-0.5 rounded-full ml-2">
+          IMG
+        </span>
+      );
+    }
+    return null;
+  };
+
+  // Determine if URL is external
+  const isExternal = result.isExternal || (!result.link.startsWith('/') && !result.link.startsWith('#'));
+  
   return (
-    <li>
-      {result.isExternal ? (
+    <li className="transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/30 rounded-md">
+      {isExternal ? (
         <a 
           href={result.link}
           target="_blank"
           rel="noopener noreferrer" 
-          className="text-primary hover:underline hover:text-primary/80 flex items-center"
+          className="text-primary hover:text-primary/80 flex items-center justify-between py-2 px-3"
         >
-          {result.label}
-          <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="flex items-center">
+            {result.label}
+            {getFileIcon(result.link)}
+          </span>
+          <svg className="w-4 h-4 ml-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
           </svg>
         </a>
@@ -227,10 +304,13 @@ function ResultLink({ result }: { result: ResultYear }) {
         <Link 
           href={result.link}
           download
-          className="text-primary hover:underline hover:text-primary/80 flex items-center"
+          className="text-primary hover:text-primary/80 flex items-center justify-between py-2 px-3"
         >
-          {result.label}
-          <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="flex items-center">
+            {result.label}
+            {getFileIcon(result.link)}
+          </span>
+          <svg className="w-4 h-4 ml-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
           </svg>
         </Link>
